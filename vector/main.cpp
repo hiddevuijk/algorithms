@@ -12,9 +12,9 @@ int main()
 {
 
 	Link* norse_gods = new Link{"Thor"};
-	norse_gods = insert(norse_gods, new Link{"Odin"});
-	norse_gods = insert(norse_gods, new Link{"Freia"});
-	norse_gods = erase(norse_gods);
+	norse_gods = norse_gods->insert(new Link{"Freia"});
+	norse_gods = norse_gods->insert(new Link{"Odan"});
+	//norse_gods = erase(norse_gods);
 
 	while( norse_gods ) {
 		cout << norse_gods->value << endl;
