@@ -11,15 +11,24 @@ using namespace std;
 int main()
 {
 
-	Link* norse_gods = new Link{"Thor"};
-	norse_gods = norse_gods->insert(new Link{"Freia"});
-	norse_gods = norse_gods->insert(new Link{"Odan"});
-	//norse_gods = erase(norse_gods);
 
-	while( norse_gods ) {
-		cout << norse_gods->value << endl;
-		norse_gods = norse_gods->succ;
-	}
+	Vector v{1.,2.};
+
+	Vector v2(10);
+	cout << v2.size() << endl;
+	v2 = v;
+	v = v;
+	cout << v2.size() << endl;
+
+	//Link* norse_gods = new Link{"Thor"};
+	//norse_gods = norse_gods->insert(new Link{"Freia"});
+	//norse_gods = norse_gods->insert(new Link{"Odan"});
+	////norse_gods = erase(norse_gods);
+
+	//while( norse_gods ) {
+	//	cout << norse_gods->value << endl;
+	//	norse_gods = norse_gods->succ;
+	//}
 
 	return 0;
 
