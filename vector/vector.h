@@ -9,7 +9,7 @@
 class Vector{
 public:
 	// constructor
-	Vector(int s)
+	 explicit Vector(int s)
 		: sz(s), elem( new double[s] )
 		{
 			for( int i=0; i<sz; ++i) elem[i] = 0.0;
@@ -37,6 +37,8 @@ public:
 
 	int size() const { return sz; }
 
+	double& operator[](int n){ return elem[n]; }
+	double operator[](int n) const { return elem[n]; }
 	double get(int n) const { return elem[n]; }
 	void set(int n, double v) { elem[n] = v; }
 

@@ -17,9 +17,10 @@ int main()
 	Vector v2(10);
 	cout << v2.size() << endl;
 	v2 = v;
-	v = v;
-	cout << v2.size() << endl;
 
+	v2[0] = 2.;
+	v2[1] = 2.;
+	cout << v2[0] << v2[1] << endl;
 	//Link* norse_gods = new Link{"Thor"};
 	//norse_gods = norse_gods->insert(new Link{"Freia"});
 	//norse_gods = norse_gods->insert(new Link{"Odan"});
