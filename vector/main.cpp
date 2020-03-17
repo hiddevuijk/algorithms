@@ -1,6 +1,6 @@
 
 #include "vector.h"
-#include "list.h"
+//#include "list.h"
 
 #include <iostream>
 #include <fstream>
@@ -12,9 +12,9 @@ int main()
 {
 
 
-	Vector v{1.,2.};
+	Vector<double> v{1.,2.};
 
-	Vector v2(10);
+	Vector<double> v2(10);
 	cout << v2.size() << endl;
 	v2 = v;
 

@@ -31,8 +31,8 @@ public:
 Link* Link::add(Link* n)
 {
 
-	if( n==nullptr ) return this;
-	if( this==nullptr ) return n;
+	if( n == nullptr ) return this;
+	if( this == nullptr ) return n;
 
 	n->prev = this;
 	if( succ ) succ->prev = n;
