@@ -59,7 +59,6 @@ private:
 	Link<Elem>* last;	// one beyond the last link
 						// is fixed to the "zeroth_link"
 						// added in the Constructor
-
 };
 
 // Iterator
