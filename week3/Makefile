@@ -9,7 +9,8 @@ LFLAGS = -Wall -g
 $(TARGET): $(OBJS)
 	$(CC) $(LFLAGS)  $(OBJS) -o $(TARGET)
 
-main.o: main.cpp  mergesort.h shuffle.h
+main.o: main.cpp  mergesort.h shuffle.h selectionsort.h \
+		insertionsort.h
 	$(CC) $(CFLAGS) main.cpp
 
 

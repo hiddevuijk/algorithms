@@ -1,4 +1,6 @@
 
+#include "selectionsort.h"
+#include "insertionsort.h"
 #include "mergesort.h"
 #include "shuffle.h"
 
@@ -19,21 +21,16 @@ int main()
 	for(int i=0;i<N;++i) {
 		v[i] = i;
 	}
-
-	for(int i=0;i<N;++i) {
-		cout << v[i] << endl;
-	}
-	cout << endl;
+	v[0] = 9;
 	shuffle(v, N -1);
-
-	for(int i=0;i<N;++i) {
-		cout << v[i] << endl;
-	}
+	
+	cout << "is sorted : ";
+	cout << isSorted(v, 0, N-1) << endl;
 	cout << endl;
-	return 0;
 
-	//sort(v);
-	//cout << isSorted(v, 0, N-1) << endl;
+
+	insertion_sort(v, 0, N-1);
+	//selection_sort(v, 0, N-1);
 
 	
 	for(int i=0;i<N;++i) {
@@ -41,6 +38,9 @@ int main()
 	}
 
 
+	cout << "is sorted : ";
+	cout << isSorted(v, 0, N-1) << endl;
+	cout << endl;
 	return 0;
 }
 
