@@ -11,6 +11,15 @@ class Stack
 	Stack(int);
 	~Stack();
 
+	// copy constructor
+	Stack(const Stack<T>& );
+
+	// copy assignment
+	Stack<T>& operator=( const Stack<T>&);
+	// move assignment
+	Stack<T>& operator=( Stack<T>&&);
+	
+
 	void push(T d);
 	T pop();
 
@@ -25,6 +34,53 @@ class Stack
 	void resize(int);
 };
 
+// move assignment
+template< class T>
+Stack<T>& Stack<T>::operator=( Stack<T>&& rhs)
+{
+
+	if( &rhs == this ) return *this;
+
+	delete data;
+
+	N = rhs.N;
+	Nmax = rhs.Nmax;
+	data = rhs.data;
+	rhs.data = nullptr;
+
+	return *this;
+}
+
+// copy assignment
+template< class T>
+Stack<T>& Stack<T>::operator=( const Stack<T>& rhs )
+{
+	if( &rhs == this ) return *this;
+
+	delete[] data;	
+	data = new T[rhs.Nmax];
+	N = rhs.N;
+	for( int i=0; i<N ; ++i )
+		data[i] = rhs.data[i];
+
+
+	return *this;
+}
+
+// copy constructor
+template< class T>
+Stack<T>::Stack( const Stack<T>& s)
+{
+
+	Nmax = s.Nmax;
+	N = s.N;
+
+	data = new T[Nmax];
+	for(int i=0; i< N; ++i) {
+		data[i] = s.data[i];
+	}
+
+}
 	
 
 template< class T>

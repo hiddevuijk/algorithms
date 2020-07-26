@@ -1,6 +1,10 @@
 #ifndef GUARD_STACK_H
 #define GUARD_STACK_H
 
+/*
+	NO copy, move defined !!
+*/
+
 #include <string>
 #include <iostream>
 
@@ -27,8 +31,6 @@ class Stack
   private:
 	Node<T> *top;
 };
-
-	
 
 template< class T>
 Stack<T>::Stack() {
