@@ -22,7 +22,7 @@ class Stack
 	int N;		// index of last item
 	int Nmax;   // container size
 
-	void double_size();
+	void resize(int);
 };
 
 	
@@ -55,7 +55,8 @@ void Stack<T>::push( T d) {
 		data[N++] = d;
 
 	} else {
-		double_size();
+		// double the size of the array
+		resize( Nmax*2 );
 		data[N++] = d;
 	}
 
@@ -71,17 +72,20 @@ T Stack<T>::pop() {
 }
 
 template< class T>
-void Stack<T>::double_size() {
+void Stack<T>::resize(int Nmax_new) {
 
-	T* temp = new T[Nmax*2];
-	for( int i = 0; i< N; ++i ) {
+
+	T* temp = new T[Nmax_new];
+	int i_max  = Nmax_new < N ? Nmax_new : N;
+	for( int i = 0; i< i_max; ++i ) {
 		temp[i] = data[i];
 	}
 
 	delete[] data;
-	Nmax *= 2;
+	Nmax = Nmax_new;
 	data = temp;
 }
+
 
 
 

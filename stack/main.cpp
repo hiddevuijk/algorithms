@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "stack.h"
+#include "stack_array.h"
 
 
 using namespace std;
