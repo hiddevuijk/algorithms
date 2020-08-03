@@ -62,7 +62,6 @@ T Queue<T>::dequeue()
 
 template<typename T>
 class Queue<T>::Iterator {
-//friend class Queue;
 private:
     Queue<T>::Node* current;
 

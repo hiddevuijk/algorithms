@@ -20,5 +20,6 @@ int main()
         cout << *it << endl;
         ++it;
     }
+
 	return 0;
 }
