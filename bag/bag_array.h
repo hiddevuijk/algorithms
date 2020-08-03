@@ -6,24 +6,23 @@
 
 
 template< class T>
-class Stack
+class Bag
 {
   public:
-	Stack();
-	Stack(int);
-	~Stack();
+	Bag();
+	Bag(int);
+	~Bag();
 
 	// copy constructor
-	Stack(const Stack<T>& );
+	Bag(const Bag<T>& );
 
 	// copy assignment
-	Stack<T>& operator=( const Stack<T>&);
+	Bag<T>& operator=( const Bag<T>&);
 	// move assignment
-	Stack<T>& operator=( Stack<T>&&);
+	Bag<T>& operator=( Bag<T>&&);
 	
 
 	void push(T d);
-	T pop();
 
 	bool empty() const { return N > 0; }
 
@@ -45,7 +44,7 @@ class Stack
 
 // move assignment
 template< class T>
-Stack<T>& Stack<T>::operator=( Stack<T>&& rhs)
+Bag<T>& Bag<T>::operator=( Bag<T>&& rhs)
 {
 
 	if( &rhs == this ) return *this;
@@ -62,7 +61,7 @@ Stack<T>& Stack<T>::operator=( Stack<T>&& rhs)
 
 // copy assignment
 template< class T>
-Stack<T>& Stack<T>::operator=( const Stack<T>& rhs )
+Bag<T>& Bag<T>::operator=( const Bag<T>& rhs )
 {
 	if( &rhs == this ) return *this;
 
@@ -77,7 +76,7 @@ Stack<T>& Stack<T>::operator=( const Stack<T>& rhs )
 
 // copy constructor
 template< class T>
-Stack<T>::Stack( const Stack<T>& s)
+Bag<T>::Bag( const Bag<T>& s)
 {
 
 	Nmax = s.Nmax;
@@ -92,7 +91,7 @@ Stack<T>::Stack( const Stack<T>& s)
 	
 
 template< class T>
-Stack<T>::Stack()
+Bag<T>::Bag()
 : N(0), Nmax(2)
 {
 	data = new T[Nmax];
@@ -100,7 +99,7 @@ Stack<T>::Stack()
 }
 
 template< class T>
-Stack<T>::Stack(int Nmax)
+Bag<T>::Bag(int Nmax)
 : N(0), Nmax(Nmax) 
 {
 	data = new T[Nmax];
@@ -108,13 +107,13 @@ Stack<T>::Stack(int Nmax)
 }
 
 template< class T>
-Stack<T>::~Stack() {
+Bag<T>::~Bag() {
 	delete[] data;	
 }
 
 
 template< class T>
-void Stack<T>::push( T d) {
+void Bag<T>::push( T d) {
 
     // double the size of the arry if it becomes to short
     if( N == Nmax ) resize( Nmax*2 );
@@ -122,24 +121,7 @@ void Stack<T>::push( T d) {
 }
 
 template< class T>
-T Stack<T>::pop() {
-
-	//if( N > 0 ) {
-	//	return data[--N];
-	//} else {
-    //    throw std::range_error( "pop from emtpy stack");
-	//}
-
-    T datum = data[--N];
-
-    if( N > 0 && N == Nmax/4 ) resize( Nmax/2 );
-
-    return datum;
-    
-}
-
-template< class T>
-void Stack<T>::resize(int Nmax_new) {
+void Bag<T>::resize(int Nmax_new) {
 
 
 	T* temp = new T[Nmax_new];
@@ -154,7 +136,7 @@ void Stack<T>::resize(int Nmax_new) {
 }
 
 template<class T>
-typename Stack<T>::Iterator Stack<T>::begin()
+typename Bag<T>::Iterator Bag<T>::begin()
 {
     Iterator it(N-1, data );
     return it;
@@ -165,7 +147,7 @@ typename Stack<T>::Iterator Stack<T>::begin()
 //------------------------------
 
 template<class T>
-class Stack<T>::Iterator {
+class Bag<T>::Iterator {
 public:
     Iterator(int n, T* data_ptr ) : i(0),n(n), data_ptr(data_ptr) {};
 
