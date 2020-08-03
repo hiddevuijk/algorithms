@@ -1,7 +1,9 @@
 #ifndef GUARD_STACK_H
 #define GUARD_STACK_H
 
-#include <iostream>
+#include <exception>
+
+
 
 template< class T>
 class Stack
@@ -23,8 +25,15 @@ class Stack
 	void push(T d);
 	T pop();
 
-	//T peek() const { return top->data; }
 	bool empty() const { return N > 0; }
+
+    int size() const { return N;}
+    int capacity() const { return Nmax;}
+
+
+    class Iterator;
+    Iterator begin();
+
 
   private:
 	T *data;
@@ -63,7 +72,6 @@ Stack<T>& Stack<T>::operator=( const Stack<T>& rhs )
 	for( int i=0; i<N ; ++i )
 		data[i] = rhs.data[i];
 
-
 	return *this;
 }
 
@@ -85,7 +93,7 @@ Stack<T>::Stack( const Stack<T>& s)
 
 template< class T>
 Stack<T>::Stack()
-: N(0), Nmax(4)
+: N(0), Nmax(2)
 {
 	data = new T[Nmax];
 
@@ -107,24 +115,27 @@ Stack<T>::~Stack() {
 
 template< class T>
 void Stack<T>::push( T d) {
-	if( N < Nmax ) {
-		data[N++] = d;
 
-	} else {
-		// double the size of the array
-		resize( Nmax*2 );
-		data[N++] = d;
-	}
-
+    // double the size of the arry if it becomes to short
+    if( N == Nmax ) resize( Nmax*2 );
+    data[N++] = d;
 }
 
 template< class T>
 T Stack<T>::pop() {
 
-	if( N > 0 ) {
-		return data[--N];
-	} else {
-	}
+	//if( N > 0 ) {
+	//	return data[--N];
+	//} else {
+    //    throw std::range_error( "pop from emtpy stack");
+	//}
+
+    T datum = data[--N];
+
+    if( N > 0 && N == Nmax/4 ) resize( Nmax/2 );
+
+    return datum;
+    
 }
 
 template< class T>
@@ -142,6 +153,33 @@ void Stack<T>::resize(int Nmax_new) {
 	data = temp;
 }
 
+template<class T>
+typename Stack<T>::Iterator Stack<T>::begin()
+{
+    Iterator it(N-1, data );
+    return it;
+}
+
+//------------------------------
+// Iterator
+//------------------------------
+
+template<class T>
+class Stack<T>::Iterator {
+public:
+    Iterator(int n, T* data_ptr ) : i(0),n(n), data_ptr(data_ptr) {};
+
+    bool hasNext() const { return i >=0; }
+
+    Iterator& operator++() { ++i; return *this; }
+    T& operator*() const { return data_ptr[n-i]; }
+
+private:
+    int i;
+    int n;
+    T* data_ptr;
+
+};
 
 
 

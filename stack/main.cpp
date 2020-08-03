@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#include "stack_ll.h"
+#include "stack_array.h"
 
 
 using namespace std;
@@ -11,17 +11,16 @@ using namespace std;
 int main()
 {
 
-	Stack<int> stack(2);
-	stack.push(1);
-	stack.push(2);
-	stack.push(3);
-	stack.push(4);
+    int N = 20;
 
-	Stack<int> s2;
+	Stack<int> stack;
+    for( int i=0; i< N; ++i ) stack.push(i+1);
 
-	cout << stack.pop() << endl;
-	cout << stack.pop() << endl;
-	cout << stack.pop() << endl;
-	cout << s2.pop() << endl;
+    Stack<int>::Iterator it = stack.begin();
+    for( int i=0; i<N; ++i) {
+        cout << *it << endl;
+        ++it;
+    }
+
 	return 0;
 }
