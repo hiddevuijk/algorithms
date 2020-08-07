@@ -70,14 +70,53 @@ void quick_sort(Item a[], int l, int r)
     if(r <= l + 15) { insertion(a,l,r); return; }
 
     // a[l] is pivot
+    if( r-l < 50 ) {
+    //if(true) {
+        // put middle positin l+1
+        // make a[l+1] <= a[l] <= a[r]
+        exch(a,l+1, (l+r)/2);
+        compexch(a, l+1, r);
+        compexch(a, l+1, l);
+        compexch(a, l+1, r);
+    } else{
+        int i11 = l+1;
+        int i12 = l + (r-l)/9;
+        int i13 = l + (r-l)*2/9;
+        int i21 = l + (r-l)/3;
+        int i22 = l + (r-l)*4/9;
+        int i23 = l + (r-l)*5/9;
+        int i31 = l + (r-l)*6/9;
+        int i32 = l + (r-l)*7/9;
+        int i33 = l + (r-l)*8/9;
 
-    // put middle positin l+1
-    // make a[l+1] <= a[l] <= a[r]
-    exch(a,l+1, (l+r)/2);
-    compexch(a, l+1, r);
-    compexch(a, l+1, l);
-    compexch(a, l+1, r);
 
+        compexch(a, i11, i12);
+        compexch(a, i12, i13);
+        compexch(a, i11, i12);
+
+        compexch(a, i21, i22);
+        compexch(a, i22, i23);
+        compexch(a, i21, i22);
+
+        compexch(a, i31, i32);
+        compexch(a, i32, i33);
+        compexch(a, i31, i32);
+
+        compexch(a, i11, i21);
+        compexch(a, i21, i31);
+        compexch(a, i11, i21);
+
+        compexch(a, i12, i22);
+        compexch(a, i22, i32);
+        compexch(a, i12, i22);
+
+        compexch(a, i13, i23);
+        compexch(a, i23, i33);
+        compexch(a, i13, i23);
+
+        exch(a, l, i22);
+
+    }
 
     int j = partition(a,l,r);
     quick_sort(a,l,j-1);

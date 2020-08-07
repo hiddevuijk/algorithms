@@ -7,6 +7,7 @@
 #include <iostream>
 #include <fstream>
 #include <math.h>
+#include <algorithm>
 
 using namespace std;
 
@@ -22,10 +23,14 @@ int main()
     int N = 50000000;
     int *a = new int[N];
 
-    for(int i=0;i<N; ++i) a[i] = i;
+    for(int i=0;i<N; ++i) a[i] = i - ( i % 100 ) + (i%3) - (i%5) + (i%8) - (i%11) - (i%30) + (i%41) - (i%53) - (i%63);
+
+    //for(int i=0; i<N; ++i) cout << a[i] << endl;
 
 
-    shuffle(a,0,N-1);
+    //shuffle(a,0,N-1);
+
+    //sort(a, a+N);
     quick_sort(a,0,N-1);
 
     cout << endl;
