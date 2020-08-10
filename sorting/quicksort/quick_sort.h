@@ -70,8 +70,8 @@ void quick_sort(Item a[], int l, int r)
     if(r <= l + 15) { insertion(a,l,r); return; }
 
     // a[l] is pivot
-    if( r-l < 50 ) {
-    //if(true) {
+    if( r-l < 5000 ) {
+    //if(true){
         // put middle positin l+1
         // make a[l+1] <= a[l] <= a[r]
         exch(a,l+1, (l+r)/2);
