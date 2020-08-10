@@ -1,6 +1,6 @@
 
 #include "insertion_sort.h"
-#include "quick_sort.h"
+#include "_quick_sort.h"
 
 #include <string>
 #include <vector>
@@ -20,14 +20,22 @@ bool sorted(Item a[], int N) {
     return true;
 }
 
+int compare( const void * a, const void * b)
+{
+    if( *(int*)a <  *(int*)b ) return -1;
+    if( *(int*)a >  *(int*)b ) return 1;
+    else return 0; 
+}
+
 int main()
 {
+
     int N = 50000000;
     int *a = new int[N];
 
 
     for(int i=0;i<N; ++i) a[i] = i - ( i % 100 ) + (i%3) - (i%5) + (i%8) - (i%11) - (i%30) + (i%41) - (i%53) - (i%63);
-    //for(int i=0;i<N; ++i) a[i] = i;
+    //for(int i=0;i<N; ++i) a[i] = N - i;
     //for(int i=0; i<N; ++i) cout << a[i] << endl;
 
 
@@ -36,7 +44,8 @@ int main()
     time_t ti, tf;
     time(&ti);
 
-    //sort(a, a+N);
+    //qsort(a, N, sizeof(int), compare);
+    //sort(a,a+N);
     quick_sort(a,0,N-1);
 
     time(&tf);
