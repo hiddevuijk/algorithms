@@ -50,7 +50,7 @@ int partition(Item a[], int l, int r)
     Item v = a[r];
     for(;;) {
         while( a[++i] < v );
-        while( v < a[--j] ) if( j == l ) break;
+        while( v < a[--j] );// if( j == l ) break;
         if( i >= j ) break;
         exch(a,i,j);
     }
