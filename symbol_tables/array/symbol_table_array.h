@@ -1,0 +1,5 @@
+#ifndef GUARD_SYMBOL_TABLE_ARRAY_U
+#define GUARD_SYMBOL_TABLE_ARRAY_U
+
+
+#endif
