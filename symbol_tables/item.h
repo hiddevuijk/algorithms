@@ -20,7 +20,7 @@ class Item
     int null() { return keyval==maxKey; }
     void rand()
     {
-        keyval = 1000*::rand()/RAND_MAX;
+        keyval = 1000.*::rand()/RAND_MAX;
         info = 1.0*::rand()/RAND_MAX;
     }
     void scan( std::istream& is = std::cin)

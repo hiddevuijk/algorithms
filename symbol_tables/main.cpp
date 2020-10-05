@@ -11,5 +11,12 @@ int main()
 {
 
 
+    Item item;
+
+
+    item.rand();
+    cout << "item was " << item << endl;
+    
+    
     return 0;
 }
