@@ -139,6 +139,9 @@ class ST
         return h->item;
     }
 
+    // change to recursive 
+    // such that is can be used with
+    // Hibbard deletion
     void deleteMin()
     {
         if( head == nullptr ) return;
@@ -154,6 +157,7 @@ class ST
         delete temp;
     }
 
+    // change to recursive 
     void deleteMax()
     {
         if( head == nullptr ) return;
