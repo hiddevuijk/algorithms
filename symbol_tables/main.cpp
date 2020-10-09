@@ -14,25 +14,21 @@ int main( int argc, char *argv[])
 
     ST<char, char> st;
 
-    Item<char, char> item('s', 'S');
-    st.insert(item);
-    item = Item<char, char>('b', 'B');
-    st.insert(item);
-    
-    item = Item<char, char>('z', 'Z');
-    st.insert(item);
-    item = Item<char, char>('r', 'R');
-    st.insert(item);
-    item = Item<char, char>('f', 'F');
-    st.insert(item);
-    item = Item<char, char>('i', 'I');
-    st.insert(item);
 
+    st.insert( 's', 's'); 
+    st.insert( 'x', 'x'); 
+    st.insert( 'e', 'e'); 
+    st.insert( 'a', 'a'); 
+    st.insert( 'r', 'r'); 
+    st.insert( 'c', 'c'); 
+    st.insert( 'h', 'h'); 
+    st.insert( 'm', 'm'); 
+    
+    
     st.show(cout);
-    cout << st.head->item.key() << endl;
-    return 0;
-    Item<char, char> ret = st.search('f');
-    if( ret.null() ) cout << "fuck" << endl;
-    else             cout << ret.val() << endl; 
+    st.deleteMax();
+    st.deleteMax();
+    cout << endl;
+    st.show(cout);
     return 0;
 }
