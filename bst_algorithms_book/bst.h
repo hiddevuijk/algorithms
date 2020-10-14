@@ -32,8 +32,9 @@ class BST
     void transplant(Node *u, Node *v); 
   public:
     BST(): root(nullptr) {}
-    //~BST();
+    ~BST();
     void destroy(Node *x);
+    void empty(); // delete all nodes
     void insert(Key k, Val v);
     void print_in_order( std::ostream& out, char sep = '\n') const;
     Node * find(Key k) const;
@@ -63,6 +64,7 @@ void BST<Key,Val>::remove(Key k)
 {
     Node *node = find(k);
     if(node != nullptr) remove(node);
+    
 }
 
 template<class Key, class Val>
@@ -83,6 +85,9 @@ void BST<Key,Val>::remove(Node *z)
         y->left = z->left;
         y->left->p = y;
     } 
+    // free memory of deleted node z
+    delete z;
+    z = nullptr;
 }
 
 // replace Node u with v
@@ -195,27 +200,28 @@ void BST<Key,Val>::print_in_order(Node *x, std::ostream& out, char sep) const
     }
 }
 
-//template<class Key, class Val>
-//BST<Key,Val>::~BST()
-//{
-//    destroy(root);
-//    delete root;
-//}
+// destroy whole bst
+template<class Key, class Val>
+BST<Key,Val>::~BST()
+{ destroy(root); }
 
+// destroy all nodes
+template<class Key, class Val>
+void BST<Key,Val>::empty()
+{ destroy(root); }
 
+// destroy subtree x
 template<class Key, class Val>
 void BST<Key,Val>::destroy(Node *x)
 {
     if( x == nullptr)  return;
-    if( x->left != nullptr) {
-        destroy(x->left);
-        delete x->left;
-    }
-    if( x->right != nullptr ) {
-        destroy(x->right);
-        delete x->right;
-    } 
+    // destroy left subtree
+    destroy(x->left);
+    //delete x->left;
+    destroy(x->right);
 
+    delete x;
+    x = nullptr;
 }
 
 #endif
