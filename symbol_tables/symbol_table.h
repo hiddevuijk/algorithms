@@ -102,6 +102,7 @@ class ST
   public:
     ST(): head(nullptr) {}
     ST(int maxN): head(nullptr) {}
+    ~ST();
     Item<Key, Val> search(Key v) { return searchR( head, v); }
     void insert(Item<Key, Val> x) { insertR( &head, x); }
     void insert(Key k, Val v){ insertR( &head, Item<Key, Val>(k,v) ); }
@@ -172,7 +173,21 @@ class ST
         h->r = temp->l;
         delete temp;
     }
+    Node *destroy(Node *x);
 };
 
+template<class Key, Val>
+ST<Key,Val>::~ST()
+{
+    if( head != nullptr) {
+        destroy(head);
+    }
+}
+
+template<class Key, Val>
+Node *ST<Key,Val>::destroy(Node *x)
+{
+    return x;
+}
 
 #endif
