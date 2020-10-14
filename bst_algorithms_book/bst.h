@@ -111,9 +111,7 @@ bool BST<Key,Val>::check_order( Node *x) const
 
 template<class Key, class Val>
 bool BST<Key,Val>::check_order() const
-{
-    return check_order(root);
-}
+{ return check_order(root); }
 
 template<class Key, class Val>
 void BST<Key,Val>::insert(Key k, Val v)
@@ -144,9 +142,7 @@ void BST<Key,Val>::insert(Key k, Val v)
 
 template<class Key, class Val>
 typename BST<Key,Val>::Node * BST<Key, Val>::find(Key k) const
-{
-    return find(root, k);
-}
+{ return find(root, k); }
 
 template<class Key, class Val>
 typename BST<Key,Val>::Node * BST<Key, Val>::find_min() const
