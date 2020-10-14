@@ -1,0 +1,19 @@
+#ifndef GUARD_PATHS_H
+#define GUARD_PATHS_H
+
+#include "undirected_graph.h"
+
+class Paths
+{
+    Paths( Graph g, int s) { graph = g;}
+
+    bool hasPathTo(int v);
+
+  private:
+    int s;
+    Graph graph;
+};
+
+
+
+#endif

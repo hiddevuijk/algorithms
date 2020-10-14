@@ -9,7 +9,7 @@ LFLAGS = -Wall -g
 $(TARGET): $(OBJS)
 	$(CC) $(LFLAGS)  $(OBJS) -o $(TARGET)
 
-main.o: main.cpp undirected_graph.h
+main.o: main.cpp undirected_graph.h paths.h
 	$(CC) $(CFLAGS) main.cpp
 
 
