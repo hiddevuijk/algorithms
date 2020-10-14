@@ -32,7 +32,8 @@ class BST
     void transplant(Node *u, Node *v); 
   public:
     BST(): root(nullptr) {}
-
+    //~BST();
+    void destroy(Node *x);
     void insert(Key k, Val v);
     void print_in_order( std::ostream& out, char sep = '\n') const;
     Node * find(Key k) const;
@@ -194,6 +195,27 @@ void BST<Key,Val>::print_in_order(Node *x, std::ostream& out, char sep) const
     }
 }
 
+//template<class Key, class Val>
+//BST<Key,Val>::~BST()
+//{
+//    destroy(root);
+//    delete root;
+//}
 
+
+template<class Key, class Val>
+void BST<Key,Val>::destroy(Node *x)
+{
+    if( x == nullptr)  return;
+    if( x->left != nullptr) {
+        destroy(x->left);
+        delete x->left;
+    }
+    if( x->right != nullptr ) {
+        destroy(x->right);
+        delete x->right;
+    } 
+
+}
 
 #endif
