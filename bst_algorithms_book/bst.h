@@ -24,16 +24,24 @@ class BST
     Node *root;
 
     void print_in_order(Node *x,  std::ostream& out, char sep) const;
+
+    // find node with Key k, starting from node x
     Node * find(Node *x, Key k) const;
+    // find min(max) key  in subtree x
     Node * find_min( Node *x) const;
     Node * find_max( Node *x) const;
+
+    // check if left->key < right->key for all nodes
+    // in subtree x
     bool check_order(Node *x) const;
 
+    // transplant subtree
+    // used in remove methods
     void transplant(Node *u, Node *v); 
   public:
     BST(): root(nullptr) {}
     ~BST();
-    void destroy(Node *x);
+    void destroy(Node *& x);
     void empty(); // delete all nodes
     void insert(Key k, Val v);
     void print_in_order( std::ostream& out, char sep = '\n') const;
@@ -64,7 +72,6 @@ void BST<Key,Val>::remove(Key k)
 {
     Node *node = find(k);
     if(node != nullptr) remove(node);
-    
 }
 
 template<class Key, class Val>
@@ -177,6 +184,8 @@ typename BST<Key,Val>::Node * BST<Key, Val>::find(Node* x, Key k) const
 
     }
     return x;
+
+    // recursive implementation
     //if( x == nullptr or k == x->key ) return x;
     //if( k < x->key ) return find(x->left, k);
     //else             return find(x->right, k);
@@ -207,13 +216,15 @@ void BST<Key,Val>::empty()
 { destroy(root); }
 
 // destroy subtree x
+// pass reference to pointer, otherwise
+// the last statement is done for the local pointer
 template<class Key, class Val>
-void BST<Key,Val>::destroy(Node *x)
+void BST<Key,Val>::destroy(Node *& x)
 {
     if( x == nullptr)  return;
     // destroy left subtree
     destroy(x->left);
-    //delete x->left;
+    //delete right subtree
     destroy(x->right);
 
     delete x;
