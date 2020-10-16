@@ -25,7 +25,9 @@ class Graph
 
     const std::vector<int>::const_iterator get_iterator(int v)
             const { return adj[v].begin(); }
+    int Nneighbours(int vi) const { return adj[vi].size(); }
 
+    int neighbourIndex(int vi, int ni) const { return adj[vi][ni]; }
   private:
     int NV; 
     int NE;
