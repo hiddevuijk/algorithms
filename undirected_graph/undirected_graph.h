@@ -17,6 +17,7 @@ class Graph
     // add edge between v and w
     void addEdge(int v, int w);
     void deleteEdge(int v, int w);
+    void deleteVertex(int v);
 
     // return # vertices
     int V() const { return NV; }
@@ -59,6 +60,10 @@ void Graph::addEdge(int v, int w)
 
 }
 
+void Graph::deleteVertex(int v) 
+{
+
+}
 void Graph::deleteEdge(int v, int w)
 {
     std::vector<int>::iterator it = std::find(adj[v].begin(), adj[v].end(), w);
