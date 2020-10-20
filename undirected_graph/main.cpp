@@ -6,6 +6,7 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include <string>
 #include <fstream>
 
@@ -14,8 +15,11 @@ using namespace std;
 int main()
 {
 
+
+
     ifstream in("graph.txt");
     Graph g(in);
+    //g.deleteEdge(4,5);
     g.showAdj();
     cout << endl;
 

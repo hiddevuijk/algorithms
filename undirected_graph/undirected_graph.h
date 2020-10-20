@@ -2,6 +2,7 @@
 #define GUARD_UNDIRECTED_GRAPH_H
 
 #include <vector>
+#include <algorithm>
 #include <fstream>
 #include <iostream>
 
@@ -15,6 +16,7 @@ class Graph
 
     // add edge between v and w
     void addEdge(int v, int w);
+    void deleteEdge(int v, int w);
 
     // return # vertices
     int V() const { return NV; }
@@ -54,6 +56,17 @@ void Graph::addEdge(int v, int w)
     NE += 1;
     adj[v].push_back(w);
     adj[w].push_back(v);
+
+}
+
+void Graph::deleteEdge(int v, int w)
+{
+    std::vector<int>::iterator it = std::find(adj[v].begin(), adj[v].end(), w);
+    if( it != adj[v].end() ) {
+        adj[v].erase(it);
+        it = std::find(adj[w].begin(), adj[w].end(), v);
+        adj[w].erase(it);
+    }
 
 }
 
