@@ -1,12 +1,12 @@
 #ifndef GUARD_PATHS_H
 #define GUARD_PATHS_H
 
-#include "undirected_graph.h"
 
+template<class G>
 class Paths
 {
   public:
-    Paths( Graph &g, int s);
+    Paths( G &g, int s);
 
     bool hasPathTo(int v) const {
         return marked[v];
@@ -14,7 +14,7 @@ class Paths
 
   private:
     int s;
-    Graph& graph;
+    G& graph;
 
     std::vector<bool> marked;
     std::vector<int> edgeTo;
@@ -22,11 +22,13 @@ class Paths
 };
 
 
-Paths::Paths( Graph& g, int s)
+template<class G>
+Paths<G>::Paths( G& g, int s)
 : s(s), graph(g), marked(g.V()), edgeTo(g.V())
 { mark_neighbours(s); }
 
-void Paths::mark_neighbours( int vi)
+template<class G>
+void Paths<G>::mark_neighbours( int vi)
 {
     marked[vi] = true;
     int Nneighbours = graph.Nneighbours(vi);
