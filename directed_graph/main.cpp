@@ -2,6 +2,7 @@
 
 #include "directed_graph.h"
 #include "paths.h"
+#include "paths_bfs.h"
 
 #include <iostream>
 #include <vector>
@@ -19,11 +20,14 @@ int main()
     cout << endl;
 
 
-    int v = 4;
+    int v = 2;
     cout << "All nodes not connected to " << v << " are:\n";
-    Paths<Digraph> paths(g,v);
+    PathsBFS<Digraph> paths(g,v);
+
+
     for( int vi=0; vi<g.V(); ++vi) {
-        if( !paths.hasPathTo(vi) ) cout << vi << endl;
+        cout <<vi << " : " <<  paths.distance(vi) << endl;
     }
     return 0;
+
 }
