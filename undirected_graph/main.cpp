@@ -10,8 +10,9 @@ using namespace std;
 int main()
 {
 
-	
-
+	fstream in("graph.txt");
+	Graph g(in);	
+	in.close;
 
 	return 0;
 }
