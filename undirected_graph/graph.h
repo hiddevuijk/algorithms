@@ -25,8 +25,16 @@ class Graph {
 
     void showAdj() const;
 
-    const std::vector<int>::const_iterator get_iterator(int v)
+	typedef std::vector<int>::const_iterator const_vertex_iterator;
+    const_vertex_iterator get_iterator(int v)
             const { return adj[v].begin(); }
+	const_vertex_iterator end( int v)
+			const { return adj[v].end(); }
+
+    //const std::vector<int>::const_iterator get_iterator(int v)
+    //        const { return adj[v].begin(); }
+	//const std::vector<int>::const_iterator end( int v)
+	//		const { return adj[v].end(); }
     int Nneighbours(int vi) const { return adj[vi].size(); }
 
     int neighbourIndex(int vi, int ni) const { return adj[vi][ni]; }

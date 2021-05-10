@@ -14,14 +14,15 @@ int main()
 	ifstream in("graph.txt");
 	Graph g(in);	
 	in.close();
-
+	
+	g.showAdj();
 
 	Paths p(g,0);
-	for(int i=0; i < g.V(); ++i) {
+	for(int i=0; i < g.getNv(); ++i) {
 		cout << 0 << " to " << i <<": " << p.hasPathTo(i) << endl;
 	}
 
-	std::vector<int> path = p.pathTo(7);
+	std::vector<int> path = p.pathTo(5);
 	cout << "Path to 0: \n";
 	for(int i=0; i< path.size(); ++i) {
 		cout << path[i] << "\t";
